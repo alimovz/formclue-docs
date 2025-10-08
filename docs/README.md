@@ -36,14 +36,14 @@ curl -X GET https://api.formclue.com/v1/clientapi/test \
 ```
 
 **Success Response:**
-```
+```json
 {
 "msg": "ok",
 "company": "[YOUR COMPANY NAME]"
 }
 ```
 **Bad Response:**
-```
+```json
 {
     "msg": "error",
     "descr": "description of error"
