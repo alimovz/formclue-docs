@@ -11,7 +11,7 @@ Create your API key here:
 
 All requests **must** include your API key in the header:
 
-api_key: xxxxxxxxxxx-xxxx
+`api_key: xxxxxxxxxxx-xxxx`
 
 
 ---
