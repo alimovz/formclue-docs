@@ -64,7 +64,7 @@ curl -X GET https://api.formclue.com/v1/clientapi/retain/{certificate_id} \
 {
     "msg": "ok",
     "descr": "Certificate [cert_id_here] is retained",
-    "credits": [number of credits left]
+    "credits": "[number of credits left]"
 }
 ```
 **Bad Response:**
