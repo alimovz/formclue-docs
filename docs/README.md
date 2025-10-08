@@ -20,7 +20,7 @@ api_key: xxxxxxxxxxx-xxxx
 
 All endpoints start with:
 
-https://api.formclue.com/v1/clientapi
+https://api.formclue.io/v1.0/clientapi
 
 
 ---
@@ -30,7 +30,7 @@ https://api.formclue.com/v1/clientapi
 Test your key with:
 
 ```bash
-curl -X GET https://api.formclue.com/v1/clientapi/test \
+curl -X GET https://api.formclue.io/v1.0/clientapi/test \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
@@ -54,7 +54,7 @@ curl -X GET https://api.formclue.com/v1/clientapi/test \
 **To retain a certificate, make a GET request:**
 
 ```bash
-curl -X GET https://api.formclue.com/v1/clientapi/retain/{certificate_id} \
+curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
@@ -83,7 +83,7 @@ curl -X GET https://api.formclue.com/v1/clientapi/retain/{certificate_id} \
 ```javascript
 const CERT_ID = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
 const API_KEY = "YOUR_API_KEY_HERE"; // Replace with your API key
-const BASE_URL = "https://api.formclue.com/v1/clientapi";
+const BASE_URL = "https://api.formclue.io/v1.0/clientapi";
 
 async function retainCert(certId) {
   try {
@@ -118,7 +118,7 @@ retainCert(CERT_ID);
 <?php
 $cert_id = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
 $api_key = "YOUR_API_KEY_HERE"; // Replace with your API key
-$base_url = "https://api.formclue.com/v1/clientapi";
+$base_url = "https://api.formclue.io/v1.0/clientapi";
 
 // Initialize cURL
 $ch = curl_init();
