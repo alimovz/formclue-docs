@@ -4,7 +4,7 @@ Welcome to the **FormClue API**. Use this API to manage certificates and track y
 
 ---
 
-## 🔑 Step 1 — Get Your API Key
+## 🔑 Get Your API Key
 
 Create your API key here:  
 [https://dash.formclue.io/profile/api](https://dash.formclue.io/profile/api)
@@ -16,16 +16,16 @@ api_key: xxxxxxxxxxx-xxxx
 
 ---
 
-## 🌐 Step 2 — Base URL
+## 🌐 API Base URL
 
 All endpoints start with:
 
-https://api.formclue.io/v1.0/clientapi
+`https://api.formclue.io/v1.0/clientapi`
 
 
 ---
 
-## 🧪 Step 3 — Test Your API Key
+## 🧪 Test Your API Key
 
 Test your key with:
 
@@ -50,7 +50,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/test \
 }
 ```
 
-## 📥 Step 4 — Retain a Certificate
+## 📥 Retain a Certificate
 **To retain a certificate, make a GET request:**
 
 ```bash
@@ -76,7 +76,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
 ```
 
 
-## Code Examples:
+# Code Examples
 **Retaining a certificate.**
 
 **Node:**
@@ -114,7 +114,7 @@ retainCert(CERT_ID);
 ```
 
 **PHP:**
-```php
+```js
 <?php
 $cert_id = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
 $api_key = "YOUR_API_KEY_HERE"; // Replace with your API key
@@ -150,7 +150,5 @@ if (curl_errno($ch)) {
 
 // Close cURL
 curl_close($ch);
-?>
-
 
 ```
