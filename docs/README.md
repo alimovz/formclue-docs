@@ -38,8 +38,8 @@ curl -X GET https://api.formclue.com/v1/clientapi/test \
 **Success Response:**
 ```json
 {
-"msg": "ok",
-"company": "[YOUR COMPANY NAME]"
+    "msg": "ok",
+    "company": "[YOUR COMPANY NAME]"
 }
 ```
 **Bad Response:**
@@ -53,14 +53,14 @@ curl -X GET https://api.formclue.com/v1/clientapi/test \
 ## 📥 Step 4 — Retain a Certificate
 **To retain a certificate, make a GET request:**
 
-```
+```bash
 curl -X GET https://api.formclue.com/v1/clientapi/retain/{certificate_id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
 
 **Success Response:**
-```
+```json
 {
     "msg": "ok",
     "descr": "Certificate [cert_id_here] is retained",
@@ -68,7 +68,7 @@ curl -X GET https://api.formclue.com/v1/clientapi/retain/{certificate_id} \
 }
 ```
 **Bad Response:**
-```
+```json
 {
     "msg": "error",
     "descr": "description of error"
@@ -80,7 +80,7 @@ curl -X GET https://api.formclue.com/v1/clientapi/retain/{certificate_id} \
 **Retaining a certificate.**
 
 **Node:**
-```
+```javascript
 const CERT_ID = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
 const API_KEY = "YOUR_API_KEY_HERE"; // Replace with your API key
 const BASE_URL = "https://api.formclue.com/v1/clientapi";
