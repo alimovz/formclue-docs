@@ -77,7 +77,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
 
 
 # Code Examples
-## 🔑 Retaining  a Certificate
+## Retaining  a Certificate
 
 **Node:**
 ```javascript
@@ -114,7 +114,7 @@ retainCert(CERT_ID);
 ```
 
 **PHP:**
-```js
+```php
 <?php
 $cert_id = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
 $api_key = "YOUR_API_KEY_HERE"; // Replace with your API key
