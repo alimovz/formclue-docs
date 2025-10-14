@@ -18,7 +18,7 @@ All requests **must** include your API key in the header:
 
 ## 🌐 API Base URL
 
-All endpoints start with:
+**All endpoints start with:**
 
 `https://api.formclue.io/v1.0/clientapi`
 
@@ -27,7 +27,7 @@ All endpoints start with:
 
 ## 🧪 Test Your API Key
 
-Test your key with:
+**Test your key with this GET request:**
 
 ```bash
 curl -X GET https://api.formclue.io/v1.0/clientapi/test \
@@ -74,6 +74,41 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
     "descr": "description of error"
 }
 ```
+
+## ✅ Check Form Submission
+The following API call allows you to check if a form submission
+was detected during the certificate's web session. Form submissions
+are a valuable action on the part of the user and strongly indicate
+he or she took action while on the page.
+
+**To check if a cert has a form submission associate with it, make the following GET request**
+
+```bash
+curl -X GET https://api.formclue.io/v1.0/clientapi/ifsubmit/{certificate_id} \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json"
+```
+
+**Success Response:**
+```json
+{
+    "msg": "ok",
+    "if_submit": true
+}
+```
+`if_submit` will have one of two values: `true` or `false`. `true` means
+a form submission was detected on the page, `false` means no submissions
+were detected.
+
+**Bad Response:** (means something went wrong during your 
+request, and we could not return a result)
+```json
+{
+    "msg": "error",
+    "descr": "description of error"
+}
+```
+
 
 
 # Code Examples
