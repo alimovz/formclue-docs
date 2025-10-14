@@ -77,7 +77,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
 
 
 # Code Examples
-**Retaining a certificate.**
+## 🔑 Retaining  a Certificate
 
 **Node:**
 ```javascript
