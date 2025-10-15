@@ -93,7 +93,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/ifsubmit/{certificate_id} \
 ```json
 {
     "msg": "ok",
-    "if_submit": true
+    "ifsubmit": true
 }
 ```
 `if_submit` will have one of two values: `true` or `false`. `true` means
