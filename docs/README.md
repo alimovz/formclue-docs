@@ -132,8 +132,6 @@ curl -X POST https://api.formclue.io/v1.0/clientapi/validate/{certificate_id} \
          }'
 ```
 
----
-
 You may pass either `email`, `phone`, or both.
 
 If both are passed, both must match for the certificate to be verified.
@@ -165,7 +163,7 @@ fails validation.
 
 
 # Code Examples
-## Retaining  a Certificate
+## Retaining a Certificate
 
 **Node:**
 ```javascript
@@ -238,5 +236,50 @@ if (curl_errno($ch)) {
 
 // Close cURL
 curl_close($ch);
+
+```
+
+
+## Validating a Certificate
+
+**Node:**
+```javascript
+const axios = require('axios');
+
+// Replace with your actual certificate ID and API key
+const certificateId = 'xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565';
+const apiKey = 'YOUR_API_KEY_HERE';
+
+const payload = {
+  email: 'lead@example.com',
+  phone: '5551234567'
+};
+
+async function validateCertificate() {
+  try {
+    const response = await axios.post(
+      `https://api.formclue.io/v1.0/clientapi/validate/${certificateId}`,
+      payload,
+      {
+        headers: {
+          'api_key': apiKey,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    console.log('Response:', response.data);
+  } catch (error) {
+    if (error.response) {
+      // Server returned an error response
+      console.error('Error response:', error.response.data);
+    } else {
+      // Network or other error
+      console.error('Error:', error.message);
+    }
+  }
+}
+
+validateCertificate();
 
 ```
