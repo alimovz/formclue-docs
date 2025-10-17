@@ -111,7 +111,7 @@ request, and we could not return a result)
 
 
 
-## 🛡️ Validate Certificate
+## 📜 Validate Certificate
 The Validate Certificate endpoint allows you to confirm that a 
 given certificate ID is valid and that the specified email 
 and/or phone number are indeed associated with it in FormClue’s records.
