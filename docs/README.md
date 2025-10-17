@@ -96,12 +96,65 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/ifsubmit/{certificate_id} \
     "ifsubmit": true
 }
 ```
-`if_submit` will have one of two values: `true` or `false`. `true` means
+`ifsubmit` will have one of two values: `true` or `false`. `true` means
 a form submission was detected on the page, `false` means no submissions
 were detected.
 
 **Bad Response:** (means something went wrong during your 
 request, and we could not return a result)
+```json
+{
+    "msg": "error",
+    "descr": "description of error"
+}
+```
+
+
+
+## 🛡️ Validate Certificate
+The Validate Certificate endpoint allows you to confirm that a 
+given certificate ID is valid and that the specified email 
+and/or phone number are indeed associated with it in FormClue’s records.
+
+This endpoint is primarily used by lead buyers to ensure that
+a received Certificate ID corresponds to a legitimate lead 
+certified by FormClue.
+
+**Example POST request**
+
+```bash
+curl -X POST https://api.formclue.io/v1.0/clientapi/validate/{certificate_id} \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json"
+     -d '{
+           "email": "lead@example.com",
+           "phone": "5551234567"
+         }'
+```
+
+---
+
+You may pass either `email`, `phone`, or both.
+
+If both are passed, both must match for the certificate to be verified.
+
+If only one field is passed, FormClue will validate based solely on that field.
+
+---
+
+**Success Response:**
+```json
+{
+    "msg": "ok",
+    "verified": true
+}
+```
+`verified` will have one of two values: `true` or `false`. `true` means
+the certificate does associate with your email and/or phone, `false` means
+FormClue did not associate posted email/phone with the certificate, which
+fails validation.
+
+**Bad Response:** 
 ```json
 {
     "msg": "error",
