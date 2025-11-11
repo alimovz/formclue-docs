@@ -1,3 +1,88 @@
+# 🔐 How FormClue Script Works
+
+FormClue is a session-intelligence and form-analytics platform that certifies and validates every form submission on your website. Think of it as a recording + forensic engine that **proves a user actually visited your site and submitted the form** — protecting you from claims of unsolicited contact or TCPA violations. It also helps you filter out bot traffic and fraudulent submissions, ensuring you only work with real, human interactions.
+
+---
+
+## Step 1: Verify Your Domain
+
+Before FormClue can certify submissions, you need to verify your domain in the back office:
+
+**👉 [Verify Your Domain](https://dash.formclue.io/dashboard/domains)**
+
+Once your domain is verified, FormClue will automatically start monitoring and certifying all form interactions on that domain.
+
+---
+
+## Step 2: Add the FormClue Script
+
+Next, grab your unique FormClue tracking script from your dashboard:
+
+**👉 [Get Your Script](https://dash.formclue.io/dashboard/certify)**
+
+Copy the script and paste it at the **bottom of your page**, just before the closing `</body>` tag.
+
+> **💡 Tip:** Placing the script at the bottom ensures your page content loads first, keeping performance optimal. With that said, placing it in other parts of the page will still work.
+
+---
+
+## Step 3: What Happens When the Script Loads
+
+Once the FormClue script loads on your page, here's what happens automatically:
+
+### ✅ **FormClue Detects All Forms**
+The script scans your page and identifies every `<form>` element.
+
+### ✅ **Hidden Certification Fields Are Injected**
+FormClue **automatically appends 2 hidden fields** to every form on your page:
+
+1. **Certificate ID** — A unique identifier for this specific session/submission
+2. **Replay Link** — A direct link to view the certified replay in your dashboard
+
+These fields look like this in your form's HTML:
+
+```html
+<input type="hidden" name="fc_cert_id" value="xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
+<input type="hidden" name="fc_cert_lookup_link" value="https://dash.formclue.io/dashboard/lookup?cert_id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
+```
+---
+
+## Step 4: Verify Leads with Certification Data
+
+When a user submits a form, the **hidden fields are submitted along with the rest of the form data**.
+
+This means when you (or your CRM, email system, or webhook) receive the lead, you'll have:
+
+| Field | Purpose |
+|-------|---------|
+| `fc_cert_id` | Unique certificate ID for this submission |
+| `fc_cert_lookup_link` | Direct link to replay the session and verify authenticity |
+
+### 🔍 **How to Use the Certification Data**
+
+#### Option 1: Click the Replay Link
+Simply open the `fc_cert_lookup_link` in your browser to watch a **high-fidelity replay** of exactly how the user filled out the form:
+- See what they typed, corrected, and changed
+- Detect bot-like behavior or suspicious patterns
+- Verify the lead is legitimate before spending time or money on it
+
+#### Option 2: Use the FormClue API for Validation & Retention
+You can programmatically validate and retain certifications using the **FormClue Client API** (documented below):
+
+**Validation Options:**
+- **Verify email or phone association** — Confirm that a specific email address or phone number is tied to a certificate ID
+- **Check for form submission** — Detect whether a form submit event was captured on the page
+- **Retain the certificate** — Store the certification in your account for **5 years** as permanent proof of consent or submission
+
+**Example Use Cases:**
+- Validate a lead in your CRM before calling or emailing them
+- Automatically flag and filter out certificates without form submissions
+- Retain high-value certifications for long-term compliance and legal protection
+
+> **💡 Pro Tip:** Retaining a certificate ensures the replay data is preserved for 5 years, giving you ironclad proof against unsolicited contact claims or regulatory audits.
+
+---
+
 # 🚀 FormClue API Documentation
 
 Welcome to the **FormClue API**. Use this API to manage certificates and track your lead data.
