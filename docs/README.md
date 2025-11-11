@@ -1,4 +1,4 @@
-# How FormClue Script Works
+# **How FormClue Script Works**
 
 FormClue is a session-intelligence and form-analytics platform that certifies and validates every form submission on your website. Think of it as a recording + forensic engine that **proves a user actually visited your site and submitted the form** — protecting you from claims of unsolicited contact or TCPA violations. It also helps you filter out bot traffic and fraudulent submissions, ensuring you only work with real, human interactions.
 
@@ -83,7 +83,7 @@ You can programmatically validate and retain certifications using the **FormClue
 
 ---
 
-# FormClue API Documentation
+# **FormClue API Documentation**
 
 Welcome to the **FormClue API**. Use this API to manage certificates and track your lead data.
 
@@ -247,7 +247,7 @@ fails validation.
 
 
 
-# Code Examples
+# **Code Examples**
 ## Retaining a Certificate
 
 **Node:**
