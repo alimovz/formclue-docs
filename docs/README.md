@@ -117,6 +117,10 @@ y0fl595xl......pgf5fqhgbk1bx
 ```
 
 > **Note:** Your verification key is unique to your domain. Make sure to copy the exact value shown in your FormClue dashboard, not the example above.
+>
+> **Example:**
+>
+> ![DNS Verification Example](https://formclue.io/images/docs/dns_verification.png)
 
 ### **Step 2: Save the DNS Record**
 
