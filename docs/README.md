@@ -83,6 +83,56 @@ You can programmatically validate and retain certifications using the **FormClue
 
 ---
 
+# **Domain Verification**
+
+This section will walk you through how to verify a domain in FormClue.
+
+---
+
+## **DNS Verification**
+
+To verify your domain ownership, you'll need to add a TXT record to your domain's DNS settings. Follow the steps below to complete the verification process.
+
+### **Step 1: Create a TXT Record**
+
+1. Log in to your domain registrar or DNS hosting provider (e.g., GoDaddy, Cloudflare, Namecheap, Route 53)
+2. Navigate to your DNS management section
+3. Create a new TXT record with the following details:
+
+**Host/Name Field:**
+```
+_formclue
+```
+
+**Record Type:**
+```
+TXT
+```
+
+**Value/Content Field:**
+
+Copy the unique verification key provided in the FormClue interface. It will look similar to this:
+```
+y0fl595xl......pgf5fqhgbk1bx
+```
+
+> **Note:** Your verification key is unique to your domain. Make sure to copy the exact value shown in your FormClue dashboard, not the example above.
+
+### **Step 2: Save the DNS Record**
+
+After entering all the required information, save or publish the DNS record through your DNS provider's interface.
+
+> **Important:** DNS changes can take anywhere from a few seconds to 48 hours to propagate, though most changes take effect within a few minutes.
+
+### **Step 3: Verify Your Domain**
+
+1. Return to the FormClue domain verification page
+2. Click the **"Verify by DNS"** button
+3. FormClue will check your DNS records for the TXT record
+4. If the record is found, your domain will be verified successfully
+
+> **💡 Pro Tip:** After adding the DNS records and clicking the "Verify by DNS" button, FormClue will automatically retry verification in the background if the initial attempt is unsuccessful due to DNS propagation delays. There is no need to manually refresh or repeatedly click the verification button. Once your DNS records have fully propagated, the system will automatically detect the changes and mark your domain as verified. Simply ensure the TXT record has been added correctly, and FormClue will handle the verification process.
+
 # **FormClue API Documentation**
 
 Welcome to the **FormClue API**. Use this API to manage certificates and track your lead data.
