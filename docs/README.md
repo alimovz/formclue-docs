@@ -197,13 +197,16 @@ function onSectionEnter() {
     // begin recording for this section
     window.FormClue && window.FormClue.startRecorder();
 }
-
+```
+```javascript
 function onSectionExit() {
     // stop recording when the section is finished
     window.FormClue && window.FormClue.startRecorder();
 }
+```
 
-// Or start recorder on button click:
+- Or start recorder on button click:
+```javascript
 document.getElementById('start-btn').addEventListener('click', function (e) {
     window.FormClue && window.FormClue.startRecorder();
 });
