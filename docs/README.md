@@ -203,7 +203,7 @@ function onSectionEnter() {
 ```javascript
 function onSectionExit() {
     // stop recording when the section is finished
-    window.FormClue && window.FormClue.startRecorder();
+    window.FormClue && window.FormClue.stopRecorder();
 }
 ```
 
