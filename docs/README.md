@@ -207,7 +207,7 @@ function onSectionExit() {
 }
 ```
 
-- Or start recorder on button click:
+- Or start/stop recorder on button click:
 
 ```javascript
 document.getElementById('start-btn').addEventListener('click', function (e) {
