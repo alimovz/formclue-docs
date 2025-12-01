@@ -192,7 +192,7 @@ Note: These functions are exposed on the global FormClue object (accessible as w
 **Code examples**
 
 - Manual start/stop around an application section:
-```javascript
+```
 function onSectionEnter() {
     // begin recording for this section
     window.FormClue && window.FormClue.startRecorder();
