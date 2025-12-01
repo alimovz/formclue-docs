@@ -137,6 +137,100 @@ After entering all the required information, save or publish the DNS record thro
 
 > **💡 Pro Tip:** After adding the DNS records and clicking the "Verify by DNS" button, FormClue will automatically retry verification in the background if the initial attempt is unsuccessful due to DNS propagation delays. There is no need to manually refresh or repeatedly click the verification button. Once your DNS records have fully propagated, the system will automatically detect the changes and mark your domain as verified. Simply ensure the TXT record has been added correctly, and FormClue will handle the verification process.
 
+
+# **Placing FormClue Script**
+
+This section will walk you through how to place FormClue's script on your site.
+
+---
+
+## **Auto Mode**
+
+You may load the FormClue (FC) script in Auto Mode. 
+In Auto Mode the recorder is initialized automatically when 
+the FC script is loaded and begins capturing user interactions 
+immediately. Recording continues until the user 
+leaves the page (e.g., closes the tab/window or navigates away).
+Use Auto Mode when you want continuous, page-level capture
+with no manual lifecycle control. **This is the default mode.**
+
+Technical summary:
+- Activation: automatic on script load.
+- Lifecycle: starts on load; stops on page unload/navigation.
+- Use case: full-page capture, minimal integration work.
+
+## **Manual Mode**
+
+Example of enabled Manual Mode in your control panel: https://dash.formclue.io/dashboard/certify — open the Advanced Options dropdown.
+
+![Manual Mode Enabled](https://formclue.io/images/docs/manual_mode.png)
+
+Manual Mode provides explicit programmatic control over the recorder lifecycle. When Manual Mode is enabled in your FormClue configuration (see admin/UI), the page gains access to two public API functions:
+
+- `FormClue.startRecorder()`
+- `FormClue.stopRecorder()`
+
+Note: These functions are exposed on the global FormClue object (accessible as window.FormClue in browser contexts).
+
+
+**API**
+- `FormClue.startRecorder()`: void
+    - Begins a new recording session. Each call to `FormClue.startRecorder()` generates a new certificate ID which is injected into the page as a hidden field on all forms (so form submissions can be associated with the current recording session).
+    - Do not call `FormClue.startRecorder()` repeatedly unless you intend to start distinct recording sessions; each invocation produces a new certificate ID.
+- `FormClue.stopRecorder()`: void
+    - Stops the active recording session. Use this to end capture when you no longer need to record user interactions.
+
+**Usage patterns**
+- Targeted section recording (recommended for multi-form / co-reg / multi-section apps)
+    - Scenario: a single page application (SPA) or a page with multiple forms where you only want to record a specific part of the user journey.
+    - Pattern:
+        1. Keep the FC script included on the page (Manual Mode enabled).
+        2. When the target section becomes active, call `FormClue.startRecorder()`.
+        3. When the target section is complete, call `FormClue.stopRecorder()`.
+        4. You may call `FormClue.startRecorder()` again later in the same session to record another discrete segment; each start generates a new certificate ID and subsequent hidden field value.
+
+**Code examples**
+
+- Manual start/stop around an application section:
+```javascript
+function onSectionEnter() {
+    // begin recording for this section
+    window.FormClue && window.FormClue.startRecorder();
+}
+
+function onSectionExit() {
+    // stop recording when the section is finished
+    window.FormClue && window.FormClue.startRecorder();
+}
+```
+
+- Start recorder on button click:
+```javascript
+document.getElementById('start-btn').addEventListener('click', function (e) {
+    window.FormClue && window.FormClue.startRecorder();
+});
+
+document.getElementById('stop-btn').addEventListener('click', function (e) {
+    window.FormClue && window.FormClue.startRecorder();
+});
+```
+`FormClue.startRecorder()` and `FormClue.stopRecorder()` can be called
+from anywhere on your page.
+
+**Best practices and important notes**
+- Ensure the FC script is present on the page before calling the API. Use an onload handler for dynamically inserted scripts or perform a runtime check (window.FormClue).
+- Each startRecorder call generates a certificate ID that is attached as a hidden field to all forms on the page. Plan your integration so that certificate lifecycle aligns with your form submission flow.
+- Avoid starting a recorder for prolonged or unnecessary segments; prefer targeted starts/stops to minimize captured data and reduce noise.
+- Calling startRecorder multiple times in a single page session will create multiple certificate IDs (one per start). The latest start replaces the active certificate for subsequent form submissions until another start occurs.
+- stopRecorder halts capture immediately; subsequent form submissions will continue to include whichever certificate ID was last applied (unless a new startRecorder call replaces it). Verify this behavior against your environment if you require different semantics.
+
+**Troubleshooting**
+- If startRecorder/stopRecorder are undefined, confirm Manual Mode is enabled in your FormClue configuration and that the FormClue script has finished loading.
+- If forms are not receiving the hidden certificate field after startRecorder, ensure the forms exist in the DOM at the time of the call or re-run startRecorder after dynamic form insertion so the hidden field can be attached.
+- For SPA route transitions, call stopRecorder prior to unmounting the recorded section and startRecorder when the target section mounts to ensure certificates are scoped correctly.
+
+
+
 # **FormClue API Documentation**
 
 Welcome to the **FormClue API**. Use this API to manage certificates and track your lead data.
