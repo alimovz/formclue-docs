@@ -192,12 +192,14 @@ Note: These functions are exposed on the global FormClue object (accessible as w
 **Code examples**
 
 - Manual start/stop around an application section:
+
 ```javascript
 function onSectionEnter() {
     // begin recording for this section
     window.FormClue && window.FormClue.startRecorder();
 }
 ```
+
 ```javascript
 function onSectionExit() {
     // stop recording when the section is finished
@@ -206,13 +208,14 @@ function onSectionExit() {
 ```
 
 - Or start recorder on button click:
+
 ```javascript
 document.getElementById('start-btn').addEventListener('click', function (e) {
     window.FormClue && window.FormClue.startRecorder();
 });
 
 document.getElementById('stop-btn').addEventListener('click', function (e) {
-    window.FormClue && window.FormClue.startRecorder();
+    window.FormClue && window.FormClue.stopRecorder();
 });
 ```
 
