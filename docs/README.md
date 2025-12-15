@@ -117,6 +117,14 @@ Our detection engine runs silently in the background of the user session, utiliz
     We scan for technical signatures left behind by automation software (such as Selenium, Puppeteer, or Playwright) and headless browsers.
 
 
+## **Retrieving the Bot Score**
+
+Once a certificate is generated, its calculated Bot Score is available immediately through our API. We recommend verifying this score before processing any lead to filter out high-risk traffic programmatically.
+
+You can retrieve the score, along with session duration and device metadata, using the **Get Certificate Metadata** endpoint.
+
+[View API Documentation: Get Certificate Metadata](https://docs.formclue.io/#/?id=get-certificate-metadata)
+
 ---
 
 # **Domain Verification**
