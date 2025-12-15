@@ -461,7 +461,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/metadata/{certificate_id} \
 {
   "msg": "ok",
   "metadata": {
-    "duration": 11448,
+    "duration": 91448,
     "device_type": "mobile",
     "bot_score": 30
   }
