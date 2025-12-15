@@ -100,7 +100,7 @@ Every certificate is assigned a probability score ranging from **0 to 100**. Thi
 
 > **Recommendation:** For the highest quality assurance, we recommend accepting leads with a score of **30 or below**.
 
-## **How It Works**
+## How It Works
 
 Our detection engine runs silently in the background of the user session, utilizing a "Passive Analysis" approach. Rather than relying on simple CAPTCHAs that disrupt the user experience, we analyze three core dimensions of the session:
 
