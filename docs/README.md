@@ -278,7 +278,7 @@ Welcome to the **FormClue API**. Use this API to manage certificates and track y
 
 ---
 
-## 🔑 Get Your API Key
+## Get Your API Key
 
 Create your API key here:  
 [https://dash.formclue.io/profile/api](https://dash.formclue.io/profile/api)
@@ -290,7 +290,7 @@ All requests **must** include your API key in the header:
 
 ---
 
-## 🌐 API Base URL
+## API Base URL
 
 **All endpoints start with:**
 
@@ -299,7 +299,7 @@ All requests **must** include your API key in the header:
 
 ---
 
-## 🧪 Test Your API Key
+## Test Your API Key
 
 **Test your key with this GET request:**
 
@@ -324,7 +324,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/test \
 }
 ```
 
-## 📥 Retain a Certificate
+## Retain a Certificate
 **To retain a certificate, make a GET request:**
 
 ```bash
@@ -349,7 +349,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
 }
 ```
 
-## ✅ Check Form Submission
+## Check Form Submission
 The following API call allows you to check if a form submission
 was detected during the certificate's web session. Form submissions
 are a valuable action on the part of the user and strongly indicate
@@ -385,7 +385,7 @@ request, and we could not return a result)
 
 
 
-## 📜 Validate Certificate
+## Validate Certificate
 The Validate Certificate endpoint allows you to confirm that a 
 given certificate ID is valid and that the specified email 
 and/or phone number are indeed associated with it in FormClue’s records.
@@ -434,6 +434,54 @@ fails validation.
 }
 ```
 
+
+## Get Certificate Metadata
+This endpoint retrieves technical details regarding the
+user session for a specific certificate ID. This includes the bot score,
+device type, and the total duration of the session.
+
+This endpoint is primarily used by lead buyers to gauge the quality of a lead
+before purchase. By analyzing the `bot_score` and `duration`, you can
+programmatically filter out automated or high-risk traffic.
+
+> **Note:** Your account has to have retention credits to use this endpoint.
+
+**Example GET request**
+
+```bash
+curl -X GET https://api.formclue.io/v1.0/clientapi/metadata/{certificate_id} \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json"
+```
+
+---
+
+**Success Response (Example):**
+```json
+{
+  "msg": "ok",
+  "metadata": {
+    "duration": 11448,
+    "device_type": "mobile",
+    "bot_score": 30
+  }
+}
+```
+
+**Response Fields:**
+
+*   `duration`: The length of the user session in milliseconds.
+    > *Note: Sessions with a duration under 10,000ms (10 seconds) may have less reliable bot scores.*
+*   `device_type`: The detected device category (e.g., `desktop`, `mobile`, `tablet`).
+*   `bot_score`: A probability score from 0 to 100 indicating the likelihood of bot traffic (0 being human).
+
+**Bad Response:**
+```json
+{
+    "msg": "error",
+    "descr": "description of error"
+}
+```
 
 
 # **Code Examples**
