@@ -24,14 +24,14 @@
     window.$docsify = {
       name: '',
       repo: '',
-      loadSidebar: true,
-      subMaxLevel: 3,
       search: {
-        maxAge: 86400000,
-        paths:  'auto',
-        placeholder:  'Search...',
-        noData: 'No Results',
-        depth: 4
+        maxAge: 86400000, // Expiration time in milliseconds
+        paths: 'auto',    // or 'auto'
+        placeholder: 'Type to search',
+        noData: 'No Results!',
+        // Headline depth, 1 - 6
+        depth: 6,
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
       }
     }
   </script>
