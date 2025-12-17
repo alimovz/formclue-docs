@@ -188,7 +188,7 @@ This section will walk you through how to place FormClue's script on your site.
 
 ---
 
-## **Auto Mode**
+## Auto Mode
 
 You may load the FormClue (FC) script in Auto Mode. 
 In Auto Mode the recorder is initialized automatically when 
@@ -203,7 +203,7 @@ Technical summary:
 - Lifecycle: starts on load; stops on page unload/navigation.
 - Use case: full-page capture, minimal integration work.
 
-## **Manual Mode**
+## Manual Mode
 
 Example of enabled Manual Mode in your control panel: https://dash.formclue.io/dashboard/certify — open the Advanced Options dropdown.
 
