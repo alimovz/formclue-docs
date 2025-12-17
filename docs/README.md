@@ -30,10 +30,10 @@ Copy the script and paste it at the **bottom of your page**, just before the clo
 
 Once the FormClue script loads on your page, here's what happens automatically:
 
-### ✅ **FormClue Detects All Forms**
+### FormClue Detects All Forms
 The script scans your page and identifies every `<form>` element.
 
-### ✅ **Hidden Certification Fields Are Injected**
+### Hidden Certification Fields Are Injected
 FormClue **automatically appends 2 hidden fields** to every form on your page:
 
 1. **Certificate ID** — A unique identifier for this specific session/submission
@@ -58,7 +58,7 @@ This means when you (or your CRM, email system, or webhook) receive the lead, yo
 | `fc_cert_id` | Unique certificate ID for this submission |
 | `fc_cert_lookup_link` | Direct link to replay the session and verify authenticity |
 
-### 🔍 **How to Use the Certification Data**
+### How to Use the Certification Data
 
 #### Option 1: Click the Replay Link
 Simply open the `fc_cert_lookup_link` in your browser to watch a **high-fidelity replay** of exactly how the user filled out the form:
