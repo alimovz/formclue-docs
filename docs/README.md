@@ -133,11 +133,11 @@ This section will walk you through how to verify a domain in FormClue.
 
 ---
 
-## **DNS Verification**
+## Using DNS
 
 To verify your domain ownership, you'll need to add a TXT record to your domain's DNS settings. Follow the steps below to complete the verification process.
 
-### **Step 1: Create a TXT Record**
+### Step 1: Create a TXT Record
 
 1. Log in to your domain registrar or DNS hosting provider (e.g., GoDaddy, Cloudflare, Namecheap, Route 53)
 2. Navigate to your DNS management section
@@ -166,13 +166,13 @@ y0fl595xl......pgf5fqhgbk1bx
 >
 > ![DNS Verification Example](https://formclue.io/images/docs/dns_verification.png)
 
-### **Step 2: Save the DNS Record**
+### Step 2: Save the DNS Record
 
 After entering all the required information, save or publish the DNS record through your DNS provider's interface.
 
 > **Important:** DNS changes can take anywhere from a few seconds to 48 hours to propagate, though most changes take effect within a few minutes.
 
-### **Step 3: Verify Your Domain**
+### Step 3: Verify Your Domain
 
 1. Return to the FormClue domain verification page
 2. Click the **"Verify by DNS"** button
