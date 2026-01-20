@@ -527,15 +527,15 @@ Both fields are optional, but at least one must be provided.
 - If both are present, the search will return leads matching **both** the specified email and phone.
 - If only one field is present, the search will return all leads matching by **either** email or phone.
 
-### Response
+**Response:**
 
-#### When No Leads Are Found
+**When No Leads Are Found**
 
 ```json
 []
 ```
 
-#### When Leads Are Found
+**When Leads Are Found**
 
 A successful response returns an array of lead objects. Each object contains:
 
