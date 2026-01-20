@@ -492,6 +492,98 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/metadata/{certificate_id} \
 ```
 
 
+## Search Leads
+
+**Endpoint:**  
+`https://api.formclue.io/v1.0/clientapi/search`
+
+Use this endpoint to search leads you have generated or retained, by email and/or phone.
+
+**Example POST request**
+
+```bash
+curl -X POST https://api.formclue.io/v1.0/clientapi/search \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json"
+     -d '{
+           "email": "user@example.com",
+           "phone": "1234567890"
+         }'
+```
+
+Send a JSON payload with the following parameters:
+
+```json
+{
+  "email": "user@example.com",
+  "phone": "1234567890"
+}
+```
+
+- `email` _(optional)_: The email address of the lead.
+- `phone` _(optional)_: The phone number of the lead.
+
+Both fields are optional, but at least one must be provided.
+- If both are present, the search will return leads matching **both** the specified email and phone.
+- If only one field is present, the search will return all leads matching by **either** email or phone.
+
+### Response
+
+#### When No Leads Are Found
+
+```json
+[]
+```
+
+#### When Leads Are Found
+
+A successful response returns an array of lead objects. Each object contains:
+
+- `cert_id`: Unique certificate ID for the lead
+- `date_created`: ISO timestamp when the lead was created
+- `ip`: IP address associated with the lead
+- `signup_url`: URL where the signup occurred
+- `email`: Email address of the lead
+- `phone`: Phone number of the lead
+- `status`: Array of status strings, e.g. `["generated", "retained"]`
+
+Example:
+
+```json
+[
+  {
+    "cert_id": "************",
+    "date_created": "2025-11-21T05:43:03.271Z",
+    "ip": "***.***.***.***",
+    "signup_url": "https://example.com/path",
+    "email": "user@example.com",
+    "phone": "**********",
+    "status": ["generated", "retained"]
+  },
+  {
+    "cert_id": "************",
+    "date_created": "2025-12-12T16:06:05.434Z",
+    "ip": "***.***.***.***",
+    "signup_url": "https://example.com/path",
+    "email": "user@example.com",
+    "phone": "**********",
+    "status": ["generated", "retained"]
+  },
+  {
+    "cert_id": "************",
+    "date_created": "2026-01-09T02:17:58.627Z",
+    "ip": "***.***.***.***",
+    "signup_url": "https://example.com/another-path",
+    "email": "user@example.com",
+    "phone": "**********",
+    "status": ["generated"]
+  }
+]
+```
+
+---
+
+
 # **Code Examples**
 ## Retaining a Certificate
 
