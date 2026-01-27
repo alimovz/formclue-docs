@@ -581,6 +581,54 @@ Example:
 ]
 ```
 
+## Share Certificates
+
+**Endpoint:**  
+`http://api.formclue.io/v1.0/clientapi/share/{certificate_id}`
+
+This endpoint allows clients to obtain a shareable link and key for a specific certificate.
+**Only users who generated or have retained access to the certificate may share it.**
+
+**Example GET request**
+
+```bash
+curl -X GET http://api.formclue.io/v1.0/clientapi/share/{certificate_id} \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json"
+```
+Replace `{certificate_id}` with the ID of the certificate you wish to share.
+
+**Success Response**
+
+```json
+{
+    "msg": "ok",
+    "share_key": "eKkLyhCcSTlyxxxxxxxxxxxxxxxxR8aiI6jg",
+    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=xxxxxxxx-67c6-4689-b888-xxxxxxxx-1925&share_key=eKkLyhCcSTlyxxxxxxxxxxxxxxxxR8aiI6jg"
+}
+```
+
+- **share_key:** A unique key to access the certificate.
+- **share_link:** A URL that allows anyone with the link to view the certificate's details, including web session replay.
+
+**Error Response**
+
+If you are not authorized to share the certificate:
+
+```json
+{
+    "msg": "error",
+    "descr": "You're not authorized to share this certificate."
+}
+```
+
+---
+
+**Notes**
+
+- Only the certificate owner (who generated it) or a user who has retained the certificate is authorized to share it.
+- The share link grants public access to the certificate and includes web session replay.
+
 ---
 
 
