@@ -287,7 +287,14 @@ This section will give you a general overview of how certificates are generated,
 
 ## Expiration
 
-Unretained FormClue certificates automatically expire based on detected user activity. Certificates generated where no form submission is detected expire 3 days after generation, while certificates that include a verified form submit event expire 30 days after generation. Once a certificate expires, it is permanently deleted from the FC system and can no longer be accessed, viewed, or shared, and any associated links immediately become invalid.
+Unretained FormClue certificates automatically expire based on 
+detected user activity. Certificates generated where no form 
+submission is detected expire 3 days after generation, while
+certificates that include a verified form submit event expire
+30 days after generation. Once a certificate expires, it is 
+permanently deleted from our system and can no longer be 
+accessed, viewed, or shared, and any associated links 
+immediately become invalid.
 
 ## Retention
 
