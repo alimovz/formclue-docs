@@ -569,7 +569,9 @@ A successful response returns an array of lead objects. Each object contains:
 - `email`: Email address of the lead
 - `phone`: Phone number of the lead
 - `status`: Array of status strings, e.g. `["generated", "retained"]`
-
+- `share_key`: A unique key to access the certificate
+- `share_link`: A URL that allows anyone with the link to view the certificate's details, including web session replay
+- 
 Example:
 
 ```json
@@ -581,7 +583,9 @@ Example:
     "signup_url": "https://example.com/path",
     "email": "user@example.com",
     "phone": "**********",
-    "status": ["generated", "retained"]
+    "status": ["generated", "retained"],
+    "share_key": "gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U",
+    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
   },
   {
     "cert_id": "************",
@@ -590,7 +594,9 @@ Example:
     "signup_url": "https://example.com/path",
     "email": "user@example.com",
     "phone": "**********",
-    "status": ["generated", "retained"]
+    "status": ["generated", "retained"],
+    "share_key": "gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U",
+    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
   },
   {
     "cert_id": "************",
@@ -599,7 +605,9 @@ Example:
     "signup_url": "https://example.com/another-path",
     "email": "user@example.com",
     "phone": "**********",
-    "status": ["generated"]
+    "status": ["generated"],
+    "share_key": "gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U",
+    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
   }
 ]
 ```
