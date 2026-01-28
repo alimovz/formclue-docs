@@ -281,7 +281,7 @@ from anywhere on your page.
 
 # **Certificates**
 
-This section will a general overview of how certificates are generated, retained and stored.
+This section will give you a general overview of how certificates are generated, retained and stored.
 
 ---
 
