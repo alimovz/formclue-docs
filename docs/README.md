@@ -279,6 +279,22 @@ from anywhere on your page.
 - For SPA route transitions, call stopRecorder prior to unmounting the recorded section and startRecorder when the target section mounts to ensure certificates are scoped correctly.
 
 
+# **Certificates**
+
+This section will a general overview of how certificates are generated, retained and stored.
+
+---
+
+## Expiration
+
+Unretained FormClue certificates automatically expire based on detected user activity. Certificates generated where no form submission is detected expire 3 days after generation, while certificates that include a verified form submit event expire 30 days after generation. Once a certificate expires, it is permanently deleted from the FC system and can no longer be accessed, viewed, or shared, and any associated links immediately become invalid.
+
+## Retention
+
+FormClue offers an optional certificate retention feature that allows customers to preserve certificates beyond the standard expiration period.
+When retained, the certificate is securely stored for up to five (5) years, during which time it may be accessed and viewed at any time. Retained certificates may also be shared with third parties, enabling organizations to provide verified proof of data collection, user interaction, and compliance whenever required.
+
+
 
 # **FormClue API Documentation**
 
@@ -624,11 +640,12 @@ If you are not authorized to share the certificate:
 
 ---
 
-**Notes**
+**Important Notes**
 
 - Only the certificate owner (who generated it) or a user who has retained the certificate is authorized to share it.
 - The share link grants public access to the certificate and includes web session replay.
-
+- When sharing unretained certificates, public access
+will expire whenever the certificates itself expires. See certificate [expiration rules](#expiration) for more details
 ---
 
 
