@@ -615,7 +615,7 @@ Example:
 ## Share Certificates
 
 **Endpoint:**  
-`http://api.formclue.io/v1.0/clientapi/share/{certificate_id}`
+`https://api.formclue.io/v1.0/clientapi/share/{certificate_id}`
 
 This endpoint allows clients to obtain a shareable link and key for a specific certificate.
 **Only users who generated or have retained access to the certificate may share it.**
@@ -623,7 +623,7 @@ This endpoint allows clients to obtain a shareable link and key for a specific c
 **Example GET request**
 
 ```bash
-curl -X GET http://api.formclue.io/v1.0/clientapi/share/{certificate_id} \
+curl -X GET https://api.formclue.io/v1.0/clientapi/share/{certificate_id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
