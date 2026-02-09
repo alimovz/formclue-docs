@@ -301,6 +301,20 @@ immediately become invalid.
 FormClue offers an optional certificate retention feature that allows customers to preserve certificates beyond the standard expiration period.
 When retained, the certificate is securely stored for up to five (5) years, during which time it may be accessed and viewed at any time. Retained certificates may also be shared with third parties, enabling organizations to provide verified proof of data collection, user interaction, and compliance whenever required.
 
+## Timezones
+
+All times shown on FC certificates are displayed relative to a 
+timezone, depending on how the certificate is accessed. 
+When viewing a certificate while logged into your FC user account,
+all timestamps associated with that certificate - including the 
+visit date and the running time shown during session replay - are
+shown in your user’s configured timezone. This timezone can
+be adjusted at any time from your Profile settings. 
+When a certificate is viewed via its publicly accessible 
+link (without logging in), those same dates and times
+are displayed in the timezone of the original session
+being certified, reflecting the end user’s local timezone 
+at the time of the visit.
 
 
 # **FormClue API Documentation**
