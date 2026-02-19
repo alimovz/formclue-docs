@@ -675,8 +675,87 @@ If you are not authorized to share the certificate:
 - The share link grants public access to the certificate and includes web session replay.
 - When sharing unretained certificates, public access
 will expire whenever the certificates itself expires. See certificate [expiration rules](#expiration) for more details
----
 
+
+## Get Certificate Consent Language
+
+**Endpoint:**  
+`https://api.formclue.io/v1.0/clientapi/consent/{certificate_id}`
+
+This endpoint returns an array of consent blocks detected on the certified form fill.  
+**Consent blocks identify sections where the user gave explicit or implied consent.**
+
+**Example GET request**
+
+```bash
+curl -X GET https://api.formclue.io/v1.0/clientapi/consent/{certificate_id} \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json"
+```
+Replace `{certificate_id}` with the ID of the certificate you wish to query.
+
+**Success Response**
+
+```json
+{
+    "msg": "ok",
+    "consent": [
+        {
+            "consent_type": "checkbox",
+            "agree": true,
+            "text": "I give permission to ......"
+        },
+        {
+            "consent_type": "clickwrap",
+            "agree": true,
+            "text": "By clicking the Submit button, I...."
+        },
+        {
+            "consent_type": "checkbox",
+            "agree": true,
+            "text": "By clicking the checkbox below, I hereby ...."
+        },
+        {
+            "consent_type": "checkbox",
+            "agree": true,
+            "text": "By clicking “I Agree”, ...."
+        }
+    ]
+}
+```
+
+- **consent_type:** The type of consent block detected. Can be `checkbox` or `clickwrap`.
+    - *checkbox:* Indicates explicit agreement (can be `agree: true` or `agree: false`)
+    - *clickwrap:* Indicates agreement by proceeding (always `agree: true`)
+- **agree:** Whether the user agreed to the consent language.
+- **text:** The consent language from the form.
+
+**No Consent Blocks Detected**
+
+If no consent blocks are found on the form:
+
+```json
+{
+    "msg": "ok",
+    "consent": []
+}
+```
+
+**Error Response**
+
+If an error occurs while querying the API:
+
+```json
+{
+    "msg": "error",
+    "descr": "description of error"
+}
+```
+
+**Notes**
+- Consent detection relies on the script identifying standardized consent sections during form completion.
+- Checkboxes may show `agree: false` if the user did not check them.
+- Clickwrap blocks always report `agree: true` since the user consents by proceeding past the block.
 
 # **Code Examples**
 ## Retaining a Certificate
