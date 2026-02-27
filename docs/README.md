@@ -317,7 +317,7 @@ being certified, reflecting the end user’s local timezone
 at the time of the visit.
 
 
-# **Evidora API Documentation**
+# **API Documentation**
 
 Welcome to the **Evidora API**. Use this API to manage certificates and track your lead data.
 
