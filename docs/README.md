@@ -1,16 +1,17 @@
 # **How Evidora Script Works**
 
-Evidora is a session-intelligence and form-analytics platform that certifies and validates every form submission on your website. Think of it as a recording + forensic engine that **proves a user actually visited your site and submitted the form** — protecting you from claims of unsolicited contact or TCPA violations. It also helps you filter out bot traffic and fraudulent submissions, ensuring you only work with real, human interactions.
+Evidora is a digital interaction and evidence platform that enables organizations to document and verify form submissions and related website interactions. The Platform generates integrity-preserving records designed to help businesses validate user activity, reduce fraudulent or automated submissions, and support compliance with applicable communication and consent requirements.
 
 ---
 
 ## Step 1: Verify Your Domain
 
-Before Evidora can certify submissions, you need to verify your domain in the back office:
+Before Evidora can create Evidence Records, you need to verify your domain in the back office:
 
-**👉 [Verify Your Domain](https://dash.formclue.io/dashboard/domains)**
+**👉 [Verify Your Domain](https://dash.evidora.io/dashboard/domains)**
 
-Once your domain is verified, Evidora will automatically start monitoring and certifying all form interactions on that domain.
+Once your domain is verified and our script is placed on your page(s),
+Evidora will automatically start monitoring and recording all user interactions on that domain.
 
 ---
 
@@ -18,7 +19,7 @@ Once your domain is verified, Evidora will automatically start monitoring and ce
 
 Next, grab your unique Evidora tracking script from your dashboard:
 
-**👉 [Get Your Script](https://dash.formclue.io/dashboard/certify)**
+**👉 [Get Your Script](https://dash.evidora.io/dashboard/certify)**
 
 Copy the script and paste it at the **bottom of your page**, just before the closing `</body>` tag.
 
@@ -33,66 +34,66 @@ Once the Evidora script loads on your page, here's what happens automatically:
 ### Evidora Detects All Forms
 The script scans your page and identifies every `<form>` element.
 
-### Hidden Certification Fields Are Injected
+### Hidden Fields Are Injected
 Evidora **automatically appends 2 hidden fields** to every form on your page:
 
-1. **Certificate ID** — A unique identifier for this specific session/submission
-2. **Replay Link** — A direct link to view the certified replay in your dashboard
+1. **Evidence Record ID** — A unique identifier for this specific session/submission
+2. **Replay Link** — A direct link to view the recorded replay in your dashboard
 
 These fields look like this in your form's HTML:
 
 ```html
-<input type="hidden" name="fc_cert_id" value="xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
-<input type="hidden" name="fc_cert_lookup_link" value="https://dash.formclue.io/dashboard/lookup?cert_id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
+<input type="hidden" name="e-rec-id" value="xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
+<input type="hidden" name="e-rec-lookup-link" value="https://dash.evidora.io/dashboard/lookup?e-rec-id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
 ```
 ---
 
-## Step 4: Verify Leads with Certification Data
+## Step 4: Verify Leads with Evidence Record Data
 
 When a user submits a form, the **hidden fields are submitted along with the rest of the form data**.
 
 This means when you (or your CRM, email system, or webhook) receive the lead, you'll have:
 
-| Field | Purpose |
-|-------|---------|
-| `fc_cert_id` | Unique certificate ID for this submission |
-| `fc_cert_lookup_link` | Direct link to replay the session and verify authenticity |
+| Field | Purpose                                                     |
+|-------|-------------------------------------------------------------|
+| `e-rec-id` | Unique Evidence Record ID for this submission               |
+| `e-rec-lookup-link` | Direct link to replay the session and view other session info |
 
-### How to Use the Certification Data
+### How to Use the Evidence Record Data
 
 #### Option 1: Click the Replay Link
-Simply open the `fc_cert_lookup_link` in your browser to watch a **high-fidelity replay** of exactly how the user filled out the form:
+Simply open the `e-rec-lookup-link` in your browser to watch a **high-fidelity replay** of exactly how the user interacted with your form/website:
 - See what they typed, corrected, and changed
 - Detect bot-like behavior or suspicious patterns
 - Verify the lead is legitimate before spending time or money on it
 
 #### Option 2: Use the Evidora API for Validation & Retention
-You can programmatically validate and retain certifications using the **Evidora Client API** (documented below):
+You can programmatically validate and retain e-records using the **Evidora Client API** (documented below):
 
 **Validation Options:**
-- **Verify email or phone association** — Confirm that a specific email address or phone number is tied to a certificate ID
+- **Verify email or phone association** — Confirm that a specific email address or phone number is tied to an Evidence Record ID
 - **Check for form submission** — Detect whether a form submit event was captured on the page
-- **Retain the certificate** — Store the certification in your account for **5 years** as permanent proof of consent or submission
+- **Retain the e-record** — Store the e-record in your account for **5 years** as permanent proof of consent or submission
 
 **Example Use Cases:**
 - Validate a lead in your CRM before calling or emailing them
-- Automatically flag and filter out certificates without form submissions
-- Retain high-value certifications for long-term compliance and legal protection
+- Automatically flag and filter out e-records without form submissions
+- Retain high-value e-records for long-term compliance and legal protection
 
-> **💡 Pro Tip:** Retaining a certificate ensures the replay data is preserved for 5 years, giving you ironclad proof against unsolicited contact claims or regulatory audits.
+> **💡 Pro Tip:** Retaining an e-record ensures the replay data is preserved for 5 years, giving you ironclad proof against unsolicited contact claims or regulatory audits.
 
 ---
 # **Bot Detection**
 
-Evidora employs a sophisticated, multi-factor bot detection system designed to validate the authenticity of every user session. By analyzing browser integrity, hardware capabilities, and behavioral biometrics, we assign a **Bot Score** to every generated certificate.
+Evidora employs a sophisticated, multi-factor bot detection system designed to validate the authenticity of every user session. By analyzing browser integrity, hardware capabilities, and behavioral biometrics, we assign a **Bot Score** to every generated evidence record.
 
 This ensures that the leads you purchase or verify are generated by real humans, protecting your budget from automated scripts, scrapers, and headless browsers.
 
-> **Important:** Reliable behavioral analysis requires data. Certificates generated from sessions lasting **less than 10 seconds** may have less accurate bot scores, as the system has had limited time to observe sufficient user interaction.
+> **Important:** Reliable behavioral analysis requires data. E-Records generated from sessions lasting **less than 10 seconds** may have less accurate bot scores, as the system has had limited time to observe sufficient user interaction.
 
 ## The Bot Score
 
-Every certificate is assigned a probability score ranging from **0 to 100**. This score represents the likelihood that the session was initiated by automated software.
+Every e-record is assigned a probability score ranging from **0 to 100**. This score represents the likelihood that the session was initiated by automated software.
 
 | Score Range &nbsp;&nbsp;&nbsp;&nbsp;   | Classification   | Description |
 |:---------------|:-----------------| :--- |
@@ -119,11 +120,11 @@ Our detection engine runs silently in the background of the user session, utiliz
 
 ## Retrieving the Bot Score
 
-Once a certificate is generated, its calculated Bot Score is available immediately through our API. We recommend verifying this score before processing any lead to filter out high-risk traffic programmatically.
+Once an e-record is generated, its calculated Bot Score is available immediately through our API. We recommend verifying this score before processing any lead to filter out high-risk traffic programmatically.
 
-You can retrieve the score, along with session duration and device metadata, using the **Get Certificate Metadata** endpoint.
+You can retrieve the score, along with session duration and device metadata, using the **Get E-Record Metadata** endpoint.
 
-[View API Documentation: Get Certificate Metadata](https://docs.formclue.io/#/?id=get-certificate-metadata)
+[View API Documentation: Get E-Record Metadata](https://docs.evidora.io/#/?id=get-e-record-metadata)
 
 ---
 
@@ -145,7 +146,7 @@ To verify your domain ownership, you'll need to add a TXT record to your domain'
 
 **Host/Name Field:**
 ```
-_formclue
+_evidora
 ```
 
 **Record Type:**
@@ -164,7 +165,7 @@ y0fl595xl......pgf5fqhgbk1bx
 >
 > **Example:**
 >
-> ![DNS Verification Example](https://formclue.io/images/docs/dns_verification.png)
+> ![DNS Verification Example](https://evidora.io/images/docs/dns_verification.png)
 
 ### Step 2: Save the DNS Record
 
@@ -190,9 +191,9 @@ This section will walk you through how to place Evidora's script on your site.
 
 ## Auto Mode
 
-You may load the Evidora (FC) script in Auto Mode. 
+You may load the Evidora script in Auto Mode. 
 In Auto Mode the recorder is initialized automatically when 
-the FC script is loaded and begins capturing user interactions 
+the script is loaded and begins capturing user interactions 
 immediately. Recording continues until the user 
 leaves the page (e.g., closes the tab/window or navigates away).
 Use Auto Mode when you want continuous, page-level capture
@@ -205,9 +206,9 @@ Technical summary:
 
 ## Manual Mode
 
-Example of enabled Manual Mode in your control panel: https://dash.formclue.io/dashboard/certify — open the Advanced Options dropdown.
+Example of enabled Manual Mode in your control panel: https://dash.evidora.io/dashboard/certify — open the Advanced Options dropdown.
 
-![Manual Mode Enabled](https://formclue.io/images/docs/manual_mode.png)
+![Manual Mode Enabled](https://evidora.io/images/docs/manual_mode.png)
 
 Manual Mode provides explicit programmatic control over the recorder lifecycle. When Manual Mode is enabled in your Evidora configuration (see admin/UI), the page gains access to two public API functions:
 
@@ -219,8 +220,8 @@ Note: These functions are exposed on the global Evidora object (accessible as wi
 
 **API**
 - `Evidora.startRecorder()`: void
-    - Begins a new recording session. Each call to `Evidora.startRecorder()` generates a new certificate ID which is injected into the page as a hidden field on all forms (so form submissions can be associated with the current recording session).
-    - Do not call `Evidora.startRecorder()` repeatedly unless you intend to start distinct recording sessions; each invocation produces a new certificate ID.
+    - Begins a new recording session. Each call to `Evidora.startRecorder()` generates a new evidence record ID which is injected into the page as a hidden field on all forms (so form submissions can be associated with the current recording session).
+    - Do not call `Evidora.startRecorder()` repeatedly unless you intend to start distinct recording sessions; each invocation produces a new e-record ID.
 - `Evidora.stopRecorder()`: void
     - Stops the active recording session. Use this to end capture when you no longer need to record user interactions.
 
@@ -228,10 +229,10 @@ Note: These functions are exposed on the global Evidora object (accessible as wi
 - Targeted section recording (recommended for multi-form / co-reg / multi-section apps)
     - Scenario: a single page application (SPA) or a page with multiple forms where you only want to record a specific part of the user journey.
     - Pattern:
-        1. Keep the FC script included on the page (Manual Mode enabled).
+        1. Keep the Evidora script included on the page (Manual Mode enabled).
         2. When the target section becomes active, call `Evidora.startRecorder()`.
         3. When the target section is complete, call `Evidora.stopRecorder()`.
-        4. You may call `Evidora.startRecorder()` again later in the same session to record another discrete segment; each start generates a new certificate ID and subsequent hidden field value.
+        4. You may call `Evidora.startRecorder()` again later in the same session to record another discrete segment; each start generates a new e-record ID and subsequent hidden field value.
 
 **Code examples**
 
@@ -267,66 +268,65 @@ document.getElementById('stop-btn').addEventListener('click', function (e) {
 from anywhere on your page.
 
 **Best practices and important notes**
-- Ensure the FC script is present on the page before calling the API. Use an onload handler for dynamically inserted scripts or perform a runtime check (window.Evidora).
-- Each startRecorder call generates a certificate ID that is attached as a hidden field to all forms on the page. Plan your integration so that certificate lifecycle aligns with your form submission flow.
-- Avoid starting a recorder for prolonged or unnecessary segments; prefer targeted starts/stops to minimize captured data and reduce noise.
-- Calling startRecorder multiple times in a single page session will create multiple certificate IDs (one per start). The latest start replaces the active certificate for subsequent form submissions until another start occurs.
-- stopRecorder halts capture immediately; subsequent form submissions will continue to include whichever certificate ID was last applied (unless a new startRecorder call replaces it). Verify this behavior against your environment if you require different semantics.
+- Ensure the Evidora script is present on the page before calling the API. Use an `onload` handler for dynamically inserted scripts or perform a runtime check (`window.Evidora`) before invoking any methods.
+- Each `startRecorder()` call generates a unique Evidence Record (**e-record**) ID. This ID is automatically attached as a hidden field to all forms on the page. Design your integration so the e-record lifecycle aligns with your form submission flow.
+- Avoid running the recorder for prolonged or unnecessary segments. Use targeted `startRecorder()` and `stopRecorder()` calls to limit captured data and keep e-records focused and relevant.
+- Calling `startRecorder()` multiple times within a single page session creates multiple e-records (one per start). The most recent call replaces the active e-record ID for subsequent form submissions until another `startRecorder()` call is made.
+- `stopRecorder()` halts capture immediately. Subsequent form submissions will continue to include the most recently generated e-record ID (unless a new `startRecorder()` call replaces it). Confirm this behavior in your environment if you require different lifecycle semantics.
 
 **Troubleshooting**
-- If startRecorder/stopRecorder are undefined, confirm Manual Mode is enabled in your Evidora configuration and that the Evidora script has finished loading.
-- If forms are not receiving the hidden certificate field after startRecorder, ensure the forms exist in the DOM at the time of the call or re-run startRecorder after dynamic form insertion so the hidden field can be attached.
-- For SPA route transitions, call stopRecorder prior to unmounting the recorded section and startRecorder when the target section mounts to ensure certificates are scoped correctly.
+- If `startRecorder()` or `stopRecorder()` are undefined, confirm Manual Mode is enabled in your Evidora configuration and that the Evidora script has fully loaded.
+- If forms are not receiving the hidden e-record field after calling `startRecorder()`, ensure the forms exist in the DOM at the time of invocation. For dynamically rendered forms, re-run `startRecorder()` after insertion so the hidden field can be attached.
+- For single-page application (SPA) route transitions, call `stopRecorder()` before unmounting the recorded section and `startRecorder()` when the target section mounts. This ensures e-records are properly scoped to the intended user interaction.
 
+# **Evidence Records**
 
-# **Certificates**
-
-This section will give you a general overview of how certificates are generated, retained and stored.
+This section will give you a general overview of how Evidence Records are generated, retained and stored.
 
 ---
 
 ## Expiration
 
-Unretained Evidora certificates automatically expire based on 
-detected user activity. Certificates generated where no form 
+Unretained Evidora e-records automatically expire based on 
+detected user activity. E-Records generated where no form 
 submission is detected expire 3 days after generation, while
-certificates that include a verified form submit event expire
-30 days after generation. Once a certificate expires, it is 
+e-records that include a verified form submit event expire
+30 days after generation. Once an e-record expires, it is 
 permanently deleted from our system and can no longer be 
 accessed, viewed, or shared, and any associated links 
 immediately become invalid.
 
 ## Retention
 
-Evidora offers an optional certificate retention feature that allows customers to preserve certificates beyond the standard expiration period.
-When retained, the certificate is securely stored for up to five (5) years, during which time it may be accessed and viewed at any time. Retained certificates may also be shared with third parties, enabling organizations to provide verified proof of data collection, user interaction, and compliance whenever required.
+Evidora offers an optional e-record retention feature that allows customers to preserve e-records beyond the standard expiration period.
+When retained, the e-record is securely stored for up to five (5) years, during which time it may be accessed and viewed at any time. Retained e-records may also be shared with third parties, enabling organizations to provide verified proof of data collection, user interaction, and compliance whenever required.
 
 ## Timezones
 
-All times shown on FC certificates are displayed relative to a 
-timezone, depending on how the certificate is accessed. 
-When viewing a certificate while logged into your FC user account,
-all timestamps associated with that certificate - including the 
+All times shown on Evidora's e-records are displayed relative to a 
+timezone, depending on how the e-record is accessed. 
+When viewing an e-record while logged into your user account,
+all timestamps associated with that e-record - including the 
 visit date and the running time shown during session replay - are
 shown in your user’s configured timezone. This timezone can
 be adjusted at any time from your Profile settings. 
-When a certificate is viewed via its publicly accessible 
+When a e-record is viewed via its publicly accessible 
 link (without logging in), those same dates and times
 are displayed in the timezone of the original session
-being certified, reflecting the end user’s local timezone 
+being recorded, reflecting the end user’s local timezone 
 at the time of the visit.
 
 
 # **API Documentation**
 
-Welcome to the **Evidora API**. Use this API to manage certificates and track your lead data.
+Use this API to manage evidence records and track your session data.
 
 ---
 
 ## Get Your API Key
 
 Create your API key here:  
-[https://dash.formclue.io/profile/api](https://dash.formclue.io/profile/api)
+[https://dash.evidora.io/profile/api](https://dash.evidora.io/profile/api)
 
 All requests **must** include your API key in the header:
 
@@ -339,7 +339,7 @@ All requests **must** include your API key in the header:
 
 **All endpoints start with:**
 
-`https://api.formclue.io/v1.0/clientapi`
+`https://api.evidora.io/v1.0/clientapi`
 
 
 ---
@@ -349,7 +349,7 @@ All requests **must** include your API key in the header:
 **Test your key with this GET request:**
 
 ```bash
-curl -X GET https://api.formclue.io/v1.0/clientapi/test \
+curl -X GET https://api.evidora.io/v1.0/clientapi/test \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
@@ -369,11 +369,11 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/test \
 }
 ```
 
-## Retain a Certificate
-**To retain a certificate, make a GET request:**
+## Retain an E-Record
+**To retain an e-record, make a GET request:**
 
 ```bash
-curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
+curl -X GET https://api.evidora.io/v1.0/clientapi/retain/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
@@ -382,7 +382,7 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
 ```json
 {
     "msg": "ok",
-    "descr": "Certificate [cert_id_here] is retained",
+    "descr": "E-Record [e-record-id-here] is retained",
     "credits": "[number of credits left]"
 }
 ```
@@ -396,14 +396,14 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/retain/{certificate_id} \
 
 ## Check Form Submission
 The following API call allows you to check if a form submission
-was detected during the certificate's web session. Form submissions
+was detected during the e-record's web session. Form submissions
 are a valuable action on the part of the user and strongly indicate
 he or she took action while on the page.
 
-**To check if a cert has a form submission associate with it, make the following GET request**
+**To check if an e-record has a form submission associate with it, make the following GET request**
 
 ```bash
-curl -X GET https://api.formclue.io/v1.0/clientapi/ifsubmit/{certificate_id} \
+curl -X GET https://api.evidora.io/v1.0/clientapi/ifsubmit/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
@@ -430,19 +430,19 @@ request, and we could not return a result)
 
 
 
-## Validate Certificate
-The Validate Certificate endpoint allows you to confirm that a 
-given certificate ID is valid and that the specified email 
-and/or phone number are indeed associated with it in Evidora’s records.
+## Validate E-Record
+The Validate E-Records endpoint allows you to confirm that a 
+given e-record ID is valid and that the specified email 
+and/or phone number are indeed associated with it in Evidora’s database.
 
 This endpoint is primarily used by lead buyers to ensure that
-a received Certificate ID corresponds to a legitimate lead 
-certified by Evidora.
+a received e-record ID corresponds to a legitimate lead 
+recorded by Evidora.
 
 **Example POST request**
 
 ```bash
-curl -X POST https://api.formclue.io/v1.0/clientapi/validate/{certificate_id} \
+curl -X POST https://api.evidora.io/v1.0/clientapi/validate/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
      -d '{
@@ -453,7 +453,7 @@ curl -X POST https://api.formclue.io/v1.0/clientapi/validate/{certificate_id} \
 
 You may pass either `email`, `phone`, or both.
 
-If both are passed, both must match for the certificate to be verified.
+If both are passed, both must match for the e-record to be verified.
 
 If only one field is passed, Evidora will validate based solely on that field.
 
@@ -467,8 +467,8 @@ If only one field is passed, Evidora will validate based solely on that field.
 }
 ```
 `verified` will have one of two values: `true` or `false`. `true` means
-the certificate does associate with your email and/or phone, `false` means
-Evidora did not associate posted email/phone with the certificate, which
+the e-record does associate with your email and/or phone, `false` means
+Evidora did not associate posted email/phone with the e-record, which
 fails validation.
 
 **Bad Response:** 
@@ -480,9 +480,9 @@ fails validation.
 ```
 
 
-## Get Certificate Metadata
+## Get E-Record Metadata
 This endpoint retrieves technical details regarding the
-user session for a specific certificate ID. This includes the bot score,
+user session for a specific e-record ID. This includes the bot score,
 device type, and the total duration of the session.
 
 This endpoint is primarily used by lead buyers to gauge the quality of a lead
@@ -494,7 +494,7 @@ programmatically filter out automated or high-risk traffic.
 **Example GET request**
 
 ```bash
-curl -X GET https://api.formclue.io/v1.0/clientapi/metadata/{certificate_id} \
+curl -X GET https://api.evidora.io/v1.0/clientapi/metadata/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
@@ -532,14 +532,14 @@ curl -X GET https://api.formclue.io/v1.0/clientapi/metadata/{certificate_id} \
 ## Search Leads
 
 **Endpoint:**  
-`https://api.formclue.io/v1.0/clientapi/search`
+`https://api.evidora.io/v1.0/clientapi/search`
 
 Use this endpoint to search leads you have generated or retained, by email and/or phone.
 
 **Example POST request**
 
 ```bash
-curl -X POST https://api.formclue.io/v1.0/clientapi/search \
+curl -X POST https://api.evidora.io/v1.0/clientapi/search \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
      -d '{
@@ -576,22 +576,22 @@ Both fields are optional, but at least one must be provided.
 
 A successful response returns an array of lead objects. Each object contains:
 
-- `cert_id`: Unique certificate ID for the lead
+- `e-record-id`: Unique Evidence Record ID for the lead
 - `date_created`: ISO timestamp when the lead was created
 - `ip`: IP address associated with the lead
 - `signup_url`: URL where the signup occurred
 - `email`: Email address of the lead
 - `phone`: Phone number of the lead
 - `status`: Array of status strings, e.g. `["generated", "retained"]`
-- `share_key`: A unique key to access the certificate
-- `share_link`: A URL that allows anyone with the link to view the certificate's details, including web session replay
+- `share_key`: A unique key to access the e-record
+- `share_link`: A URL that allows anyone with the link to view the e-record's details, including web session replay
 - 
 Example:
 
 ```json
 [
   {
-    "cert_id": "************",
+    "e-record-id": "************",
     "date_created": "2025-11-21T05:43:03.271Z",
     "ip": "***.***.***.***",
     "signup_url": "https://example.com/path",
@@ -599,10 +599,10 @@ Example:
     "phone": "**********",
     "status": ["generated", "retained"],
     "share_key": "gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U",
-    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
+    "share_link": "https://dash.evidora.io/dashboard/lookup?e-rec-id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
   },
   {
-    "cert_id": "************",
+    "e-record-id": "************",
     "date_created": "2025-12-12T16:06:05.434Z",
     "ip": "***.***.***.***",
     "signup_url": "https://example.com/path",
@@ -610,10 +610,10 @@ Example:
     "phone": "**********",
     "status": ["generated", "retained"],
     "share_key": "gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U",
-    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
+    "share_link": "https://dash.evidora.io/dashboard/lookup?e-rec-id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
   },
   {
-    "cert_id": "************",
+    "e-record-id": "************",
     "date_created": "2026-01-09T02:17:58.627Z",
     "ip": "***.***.***.***",
     "signup_url": "https://example.com/another-path",
@@ -621,27 +621,27 @@ Example:
     "phone": "**********",
     "status": ["generated"],
     "share_key": "gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U",
-    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
+    "share_link": "https://dash.evidora.io/dashboard/lookup?e-rec-id=*****************&share_key=gw7UqzDmvXXXXXXXXXXXXXXXXM5v90U"
   }
 ]
 ```
 
-## Share Certificates
+## Share E-Records
 
 **Endpoint:**  
-`https://api.formclue.io/v1.0/clientapi/share/{certificate_id}`
+`https://api.evidora.io/v1.0/clientapi/share/{e-record-id}`
 
-This endpoint allows clients to obtain a shareable link and key for a specific certificate.
-**Only users who generated or have retained access to the certificate may share it.**
+This endpoint allows clients to obtain a shareable link and key for a specific e-record.
+**Only users who generated or have retained access to the e-record may share it.**
 
 **Example GET request**
 
 ```bash
-curl -X GET https://api.formclue.io/v1.0/clientapi/share/{certificate_id} \
+curl -X GET https://api.evidora.io/v1.0/clientapi/share/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
-Replace `{certificate_id}` with the ID of the certificate you wish to share.
+Replace `{e-record-id}` with the ID of the e-record you wish to share.
 
 **Success Response**
 
@@ -649,21 +649,21 @@ Replace `{certificate_id}` with the ID of the certificate you wish to share.
 {
     "msg": "ok",
     "share_key": "eKkLyhCcSTlyxxxxxxxxxxxxxxxxR8aiI6jg",
-    "share_link": "https://dash.formclue.io/dashboard/lookup?cert_id=xxxxxxxx-67c6-4689-b888-xxxxxxxx-1925&share_key=eKkLyhCcSTlyxxxxxxxxxxxxxxxxR8aiI6jg"
+    "share_link": "https://dash.evidora.io/dashboard/lookup?e-rec-id=xxxxxxxx-67c6-4689-b888-xxxxxxxx-1925&share_key=eKkLyhCcSTlyxxxxxxxxxxxxxxxxR8aiI6jg"
 }
 ```
 
-- **share_key:** A unique key to access the certificate.
-- **share_link:** A URL that allows anyone with the link to view the certificate's details, including web session replay.
+- **share_key:** A unique key to access the e-record.
+- **share_link:** A URL that allows anyone with the link to view the e-record's details, including web session replay.
 
 **Error Response**
 
-If you are not authorized to share the certificate:
+If you are not authorized to share the e-record:
 
 ```json
 {
     "msg": "error",
-    "descr": "You're not authorized to share this certificate."
+    "descr": "You're not authorized to share this e-record."
 }
 ```
 
@@ -671,28 +671,28 @@ If you are not authorized to share the certificate:
 
 **Important Notes**
 
-- Only the certificate owner (who generated it) or a user who has retained the certificate is authorized to share it.
-- The share link grants public access to the certificate and includes web session replay.
-- When sharing unretained certificates, public access
-will expire whenever the certificates itself expires. See certificate [expiration rules](#expiration) for more details
+- Only the e-record owner (who generated it) or a user who has retained the e-record is authorized to share it.
+- The share link grants public access to the e-record and includes web session replay.
+- When sharing unretained e-records, public access
+will expire whenever the e-records itself expires. See e-record [expiration rules](#expiration) for more details
 
 
-## Get Certificate Consent Language
+## Get E-Record Consent Language
 
 **Endpoint:**  
-`https://api.formclue.io/v1.0/clientapi/consent/{certificate_id}`
+`https://api.evidora.io/v1.0/clientapi/consent/{e-record-id}`
 
-This endpoint returns an array of consent blocks detected on the certified form fill.  
+This endpoint returns an array of consent blocks detected on the e-record's form fill.  
 **Consent blocks identify sections where the user gave explicit or implied consent.**
 
 **Example GET request**
 
 ```bash
-curl -X GET https://api.formclue.io/v1.0/clientapi/consent/{certificate_id} \
+curl -X GET https://api.evidora.io/v1.0/clientapi/consent/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
 ```
-Replace `{certificate_id}` with the ID of the certificate you wish to query.
+Replace `{e-record-id}` with the ID of the e-record you wish to query.
 
 **Success Response**
 
@@ -758,17 +758,17 @@ If an error occurs while querying the API:
 - Clickwrap blocks always report `agree: true` since the user consents by proceeding past the block.
 
 # **Code Examples**
-## Retaining a Certificate
+## Retaining an E-Record
 
 **Node:**
 ```javascript
-const CERT_ID = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
+const ID = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your e-record ID
 const API_KEY = "YOUR_API_KEY_HERE"; // Replace with your API key
-const BASE_URL = "https://api.formclue.io/v1.0/clientapi";
+const BASE_URL = "https://api.evidora.io/v1.0/clientapi";
 
-async function retainCert(certId) {
+async function retainERecord(id) {
   try {
-    const response = await fetch(`${BASE_URL}/retain/${certId}`, {
+    const response = await fetch(`${BASE_URL}/retain/${id}`, {
       method: "GET",
       headers: {
         "api_key": API_KEY,
@@ -790,22 +790,22 @@ async function retainCert(certId) {
 }
 
 // Run the function
-retainCert(CERT_ID);
+retainERecord(ID);
 
 ```
 
 **PHP:**
 ```php
 <?php
-$cert_id = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your cert ID
+$e_rec_id = "xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565"; // Replace with your e-record ID
 $api_key = "YOUR_API_KEY_HERE"; // Replace with your API key
-$base_url = "https://api.formclue.io/v1.0/clientapi";
+$base_url = "https://api.evidora.io/v1.0/clientapi";
 
 // Initialize cURL
 $ch = curl_init();
 
 // Set URL and headers
-curl_setopt($ch, CURLOPT_URL, "$base_url/retain/$cert_id");
+curl_setopt($ch, CURLOPT_URL, "$base_url/retain/$e_rec_id");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     "api_key: $api_key",
@@ -835,14 +835,14 @@ curl_close($ch);
 ```
 
 
-## Validating a Certificate
+## Validating an E-Record
 
 **Node:**
 ```javascript
 const axios = require('axios');
 
-// Replace with your actual certificate ID and API key
-const certificateId = 'xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565';
+// Replace with your actual e-record ID and API key
+const e_recordId = 'xxxxxxxx-a7c3-4689-bece-xxxxxxxxx-1565';
 const apiKey = 'YOUR_API_KEY_HERE';
 
 const payload = {
@@ -850,10 +850,10 @@ const payload = {
   phone: '5551234567'
 };
 
-async function validateCertificate() {
+async function validateERecord() {
   try {
     const response = await axios.post(
-      `https://api.formclue.io/v1.0/clientapi/validate/${certificateId}`,
+      `https://api.evidora.io/v1.0/clientapi/validate/${e_recordId}`,
       payload,
       {
         headers: {
@@ -875,6 +875,6 @@ async function validateCertificate() {
   }
 }
 
-validateCertificate();
+validateERecord();
 
 ```
