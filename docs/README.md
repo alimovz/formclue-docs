@@ -550,12 +550,13 @@ curl -X GET https://api.evidora.io/v1.0/clientapi/metadata/{e-record-id} \
 ```
 
 
-## Search Leads
+## Search Evidence Records by Phone or Email
 
 **Endpoint:**  
 `https://api.evidora.io/v1.0/clientapi/search`
 
-Use this endpoint to search leads you have generated or retained, by email and/or phone.
+Use this endpoint to search e-records by email and/or phone.
+You can only search e-records you have generated and/or retained.
 
 **Example POST request**
 
@@ -582,20 +583,20 @@ Send a JSON payload with the following parameters:
 - `phone` _(optional)_: The phone number of the lead.
 
 Both fields are optional, but at least one must be provided.
-- If both are present, the search will return leads matching **both** the specified email and phone.
-- If only one field is present, the search will return all leads matching by **either** email or phone.
+- If both are present, the search will return e-records matching **both** the specified email and phone.
+- If only one field is present, the search will return e-records matching by **either** email or phone.
 
 **Response:**
 
-**When No Leads Are Found**
+**When No E-Records Are Found**
 
 ```json
 []
 ```
 
-**When Leads Are Found**
+**When E-Records Are Found**
 
-A successful response returns an array of lead objects. Each object contains:
+A successful response returns an array of e-record objects. Each object contains:
 
 - `e-record-id`: Unique Evidence Record ID for the lead
 - `date_created`: ISO timestamp when the lead was created
