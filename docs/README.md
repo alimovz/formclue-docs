@@ -31,10 +31,10 @@ Copy the script and paste it at the **bottom of your page**, just before the clo
 
 Once the Evidora script loads on your page, here's what happens automatically:
 
-### Evidora Detects All Forms
+#### Evidora Detects All Forms
 The script scans your page and identifies every `<form>` element.
 
-### Hidden Fields Are Injected
+#### Hidden Fields Are Injected
 Evidora **automatically appends 2 hidden fields** to every form on your page:
 
 1. **Evidence Record ID** — A unique identifier for this specific session/submission
@@ -46,6 +46,27 @@ These fields look like this in your form's HTML:
 <input type="hidden" name="e-rec-id" value="xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
 <input type="hidden" name="e-rec-lookup-link" value="https://dash.evidora.io/dashboard/lookup?e-rec-id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
 ```
+
+#### Evidence Record ID (e-rec-id) in the `window` API
+
+For convenience, Evidora also exposes the Evidence Record ID for the current session directly on the global `window` object:
+
+```javascript
+window.Evidora.ERecordID // "xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx"
+```
+
+- This value is **identical** to the `e-rec-id` injected into each form as a hidden field.
+- The global variable is available **even if there are no forms on the page**. This allows you to reference the session’s Evidence Record ID elsewhere in your application (for example, passing it to APIs, analytics, or UI elements).
+- You can access it immediately after the script loads.
+
+#### Example Usage
+
+```javascript
+console.log('Current Evidence Record ID:', window.Evidora.ERecordID);
+```
+
+> **Note:** Having a global `ERecordID` enables non-form-based workflows and integrations—use it whenever you need to associate actions or data on the page with the current Evidora session.
+
 ---
 
 ## Step 4: Verify Leads with Evidence Record Data
