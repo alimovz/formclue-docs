@@ -391,12 +391,37 @@ curl -X GET https://api.evidora.io/v1.0/clientapi/test \
 ```
 
 ## Retain an E-Record
-**To retain an e-record, make a GET request:**
+
+You can retain an e-record by making either a **GET** or **POST** request to the Evidora API.
+
+- **GET request** (as shown below) simply retains the specified e-record.
+- **POST request** allows you to include an optional `source` parameter in the request body, which you can use to indicate the originating platform or application making the retention request.
+
+**Example: GET request**
 
 ```bash
 curl -X GET https://api.evidora.io/v1.0/clientapi/retain/{e-record-id} \
      -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json"
+```
+
+**Example: POST request**
+Include the `source` field in the JSON body to tag the request with your platform's identifier:
+
+```bash
+curl -X POST https://api.evidora.io/v1.0/clientapi/retain/{e-record-id} \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json" \
+     -d '{"source": "my-platform"}'
+```
+
+Use the POST variant if you have multiple systems integrating with the API and want to track or audit which platform is initiating the retention. The `source` parameter should be set to a concise identifier for your application or service.
+
+**Request body format:**
+```json
+{
+  "source": "my-platform"
+}
 ```
 
 **Success Response:**
