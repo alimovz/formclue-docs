@@ -43,8 +43,8 @@ Evidora **automatically appends 2 hidden fields** to every form on your page:
 These fields look like this in your form's HTML:
 
 ```html
-<input type="hidden" name="e-rec-id" value="xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
-<input type="hidden" name="e-rec-lookup-link" value="https://dash.evidora.io/dashboard/lookup?e-rec-id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
+<input type="hidden" name="evidence_record_id" value="xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
+<input type="hidden" name="evidence_lookup_link" value="https://dash.evidora.io/dashboard/lookup?e-rec-id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
 ```
 
 #### Evidence Record ID (e-rec-id) in the `window` API
