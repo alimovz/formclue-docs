@@ -804,6 +804,125 @@ If an error occurs while querying the API:
 - Checkboxes may show `agree: false` if the user did not check them.
 - Clickwrap blocks always report `agree: true` since the user consents by proceeding past the block.
 
+
+# **Webhooks**
+
+Webhooks allow you to securely deliver real-time payment 
+transaction evidence to Evidora from your platform. 
+This ensures that all key customer payment events and 
+transaction data are properly linked to the visitor's evidence 
+record.
+
+---
+
+## Custom Webhooks
+
+**Custom webhooks** are used in cases where you have the 
+ability to post payment transaction details directly to Evidora,
+rather than relying on an external payment provider (such as Stripe or Paypal)
+to do so. This allows your system to send transaction data 
+to Evidora and associate it with a specific digital evidence
+record (a user session tracked by Evidora).
+
+**Example Request:**
+```bash
+curl -X POST https://api.evidora.io/v1.0/clientapi/webhooks/custom \
+     -H "api_key: xxxxxxxxxxx-xxxx" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "event_id": "trx_9876543210",
+           "event_type": "transaction.completed",
+           "evidence_record_id": "0mocuwndo-d5b0-481a-aed8-fa0006c703bc-2060",
+           "customer_email": "jane.doe@example.com",
+           "customer_name": "Jane Doe",
+           "amount": 4999,
+           "currency": "usd",
+           "card_last4": "5666",
+           "products": [
+             {
+               "name": "Pillow For Dogs",
+               "quantity": 2,
+               "unit_price": 999,
+               "line_total": 1998
+             },
+             {
+               "name": "Doggy Treats Bag",
+               "quantity": 3,
+               "unit_price": 249,
+               "line_total": 747
+             }
+           ]
+         }'
+```
+---
+
+### **Parameter Details**
+
+- **event_id** (*string, required*)  
+  Unique identifier for the payment transaction (e.g., transaction or order ID from your processor). Used to deduplicate incoming records.
+
+- **event_type** (*string, optional*)  
+  The type of transaction event, such as "transaction.completed", "charge.success", etc.
+
+- **evidence_record_id** (*string, required*)  
+  The Evidence Record ID (generated on your site by the Evidora tracking script (often stored in a hidden field named `evidence_record_id`). This ties the transaction to a user’s web session and digital evidence record.  
+  **If you do not have this, the transaction cannot be linked and the webhook will be rejected.**
+
+- **customer_email** (*string, required*)  
+  The payer's email address.
+
+- **customer_name** (*string, optional*)  
+  Full name of the customer.
+
+- **amount** (*integer, required*)  
+  The payment amount in the smallest unit (e.g., cents). For $14.99, use `1499`.
+
+- **currency** (*string, optional, default: "usd"*)  
+  ISO 3-letter currency code (e.g., "usd", "eur").
+
+- **card_last4** (*string, optional*)  
+  The last four digits of the payment card (if available).
+
+- **products** (*array, optional*)  
+  List each product purchased.  
+  Each object requires:
+    - `name` (*string*): Product name.
+    - `quantity` (*integer*): Number purchased.
+    - `unit_price` (*integer*): Price per unit, in smallest unit (e.g., cents).
+    - `line_total` (*integer*): Total for this product line (unit_price * quantity).
+
+**Posting product line items:**  
+Add a `products` array as shown above. Each entry gives Evidora detailed context of what was purchased in the transaction.
+
+---
+
+### **Example Success Response**
+```json
+{
+    "msg": "ok"
+}
+```
+
+### **Example Error Response**
+```json
+{
+    "msg": "error",
+    "descr": "[Description of error here]"
+}
+```
+
+---
+
+### Best Practices & Notes
+
+- **Always use the `evidence_record_id`** from the user's web session (provided by Evidora's JS tag on your page).
+- **Send a unique `event_id` with each request**: Sending a unique `event_id` allows for easier troubleshooting should technical issues arise.
+- If you have technical integration questions, contact EVIDORA support or refer to additional documentation.
+
+---
+
+
+
 # **Code Examples**
 ## Retaining an E-Record
 
