@@ -835,7 +835,7 @@ curl -X POST https://api.evidora.io/v1.0/clientapi/webhooks/custom \
            "evidence_record_id": "0mocuwndo-d5b0-481a-aed8-fa0006c703bc-2060",
            "customer_email": "jane.doe@example.com",
            "customer_name": "Jane Doe",
-           "amount": 4999,
+           "amount": 2745,
            "currency": "usd",
            "card_last4": "5666",
            "products": [
