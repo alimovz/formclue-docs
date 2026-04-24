@@ -892,7 +892,7 @@ curl -X POST https://api.evidora.io/v1.0/clientapi/webhooks/custom \
     - `line_total` (*integer*): Total for this product line (unit_price * quantity).
 
 **Posting product line items:**  
-Add a `products` array as shown above. Each entry gives Evidora detailed context of what was purchased in the transaction.
+Add a `products` array as shown above. Each entry gives Evidora detailed context of what was purchased in the transaction during the user's session - allowing for stronger evidence records.
 
 ---
 
@@ -917,7 +917,7 @@ Add a `products` array as shown above. Each entry gives Evidora detailed context
 
 - **Always use the `evidence_record_id`** from the user's web session (provided by Evidora's JS tag on your page).
 - **Send a unique `event_id` with each request**: Sending a unique `event_id` allows for easier troubleshooting should technical issues arise.
-- If you have technical integration questions, contact EVIDORA support or refer to additional documentation.
+- If you have technical integration questions, contact our support or refer to additional documentation.
 
 ---
 
