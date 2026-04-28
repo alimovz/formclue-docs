@@ -47,7 +47,7 @@ These fields look like this in your form's HTML:
 <input type="hidden" name="evidence_lookup_link" value="https://dash.evidora.io/dashboard/lookup?e-rec-id=xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx">
 ```
 
-#### Evidence Record ID (e-rec-id) in the `window` API
+#### Evidence Record ID (evidence_record_id) in the `window` API
 
 For convenience, Evidora also exposes the Evidence Record ID for the current session directly on the global `window` object:
 
@@ -55,7 +55,7 @@ For convenience, Evidora also exposes the Evidence Record ID for the current ses
 window.Evidora.ERecordID // "xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx-xxxx"
 ```
 
-- This value is **identical** to the `e-rec-id` injected into each form as a hidden field.
+- This value is **identical** to the `evidence_record_id` injected into each form as a hidden field.
 - The global variable is available **even if there are no forms on the page**. This allows you to reference the session’s Evidence Record ID elsewhere in your application (for example, passing it to APIs, analytics, or UI elements).
 - You can access it immediately after the script loads.
 
@@ -77,13 +77,13 @@ This means when you (or your CRM, email system, or webhook) receive the lead, yo
 
 | Field | Purpose                                                     |
 |-------|-------------------------------------------------------------|
-| `e-rec-id` | Unique Evidence Record ID for this submission               |
-| `e-rec-lookup-link` | Direct link to replay the session and view other session info |
+| `evidence_record_id` | Unique Evidence Record ID for this submission               |
+| `evidence_lookup_link` | Direct link to replay the session and view other session info |
 
 ### How to Use the Evidence Record Data
 
 #### Option 1: Click the Replay Link
-Simply open the `e-rec-lookup-link` in your browser to watch a **high-fidelity replay** of exactly how the user interacted with your form/website:
+Simply open the `evidence_lookup_link` in your browser to watch a **high-fidelity replay** of exactly how the user interacted with your form/website:
 - See what they typed, corrected, and changed
 - Detect bot-like behavior or suspicious patterns
 - Verify the lead is legitimate before spending time or money on it
