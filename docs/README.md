@@ -827,7 +827,6 @@ record (a user session tracked by Evidora).
 **Example Request:**
 ```bash
 curl -X POST https://api.evidora.io/v1.0/clientapi/webhooks/custom \
-     -H "api_key: xxxxxxxxxxx-xxxx" \
      -H "Content-Type: application/json" \
      -d '{
            "event_id": "trx_9876543210",
