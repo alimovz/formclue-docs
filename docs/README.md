@@ -149,13 +149,13 @@ You can retrieve the score, along with session duration and device metadata, usi
 
 ---
 
-# **Domain Verification**
+# **Domains**
 
-This section will walk you through how to verify a domain in Evidora.
+This section will walk you through how to verify a domain in Evidora as well as how to set Auto-Retain rules for your domains.
 
 ---
 
-## Using DNS
+## DNS Verification
 
 To verify your domain ownership, you'll need to add a TXT record to your domain's DNS settings. Follow the steps below to complete the verification process.
 
@@ -202,6 +202,51 @@ After entering all the required information, save or publish the DNS record thro
 4. If the record is found, your domain will be verified successfully
 
 > **💡 Pro Tip:** After adding the DNS records and clicking the "Verify by DNS" button, Evidora will automatically retry verification in the background if the initial attempt is unsuccessful due to DNS propagation delays. There is no need to manually refresh or repeatedly click the verification button. Once your DNS records have fully propagated, the system will automatically detect the changes and mark your domain as verified. Simply ensure the TXT record has been added correctly, and Evidora will handle the verification process.
+
+## Auto Retain Rules
+
+Auto Retain Rules let you decide when Evidora should automatically retain generated e-records for a verified domain.
+
+You can configure this feature from the **Domains** page by opening the actions menu for a domain and selecting **Auto Retain Rules**.
+
+Auto retain is helpful when you only want to retain sessions that reach a meaningful point in the user journey.
+
+For example, you may want to:
+
+- retain every session automatically
+- retain only sessions where an email was submitted
+- retain only sessions where a phone number was submitted
+- retain sessions only after both email and phone were submitted
+
+### How it works
+
+Auto retain can be turned on or off for each domain.
+
+When enabled, you can choose between two rule types:
+
+- **Retain all generated e-records immediately**  
+  Every generated e-record for that domain is retained automatically.
+
+- **Retain conditionally based on detected events**  
+  Retention only happens when specific events are detected during the session.
+
+## Supported conditional events
+
+Right now, conditional auto retain supports:
+
+- Email submit
+- Phone submit
+
+You can combine these using:
+
+- **OR** - retain when any selected event happens
+- **AND** - retain only when all selected events happen
+
+### At-a-glance indicator
+
+Domains with auto retain enabled display a lightning bolt icon in the Domains table so you can quickly see which domains have active retention rules.
+
+![DNS Verification Example](https://evidora.io/images/docs/auto-retain-on.png)
 
 
 # **Placing Evidora Script**
