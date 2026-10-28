@@ -554,7 +554,7 @@ If only one field is passed, Evidora will validate based solely on that field.
 ```json
 {
     "msg": "ok",
-    "verified": true
+    "valid": true
 }
 ```
 `verified` will have one of two values: `true` or `false`. `true` means
