@@ -557,7 +557,7 @@ If only one field is passed, Evidora will validate based solely on that field.
     "valid": true
 }
 ```
-`verified` will have one of two values: `true` or `false`. `true` means
+`valid` will have one of two values: `true` or `false`. `true` means
 the e-record does associate with your email and/or phone, `false` means
 Evidora did not associate posted email/phone with the e-record, which
 fails validation.
